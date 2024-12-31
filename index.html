@@ -2,149 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text Classification with TensorFlow.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="script.js" defer></script>
-    <style>
-      body {
-        background-color: antiquewhite;
-        max-width: 800px;
-        margin: auto;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-      }
-      #textInput {
-        width: 100%;
-        min-height: 100px;
-        resize: vertical;
-        overflow: auto;
-      }
-
-      button {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #45a049;
-      }
-      .checklist {
-        margin-top: 20px;
-        padding: 10px;
-        border: 1px solid black;
-        background-color: white;
-      }
-      .category-list,
-      .model-summary {
-        margin-top: 10px;
-        padding: 10px;
-        border: 1px solid black;
-        background-color: #f7f7f7;
-      }
-      .error-box {
-        margin-top: 10px;
-        padding: 10px;
-        border: 1px solid red;
-        background-color: #ffe6e6;
-        color: red;
-      }
-      .summary-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      .summary-table th,
-      .summary-table td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-      }
-      .summary-table th {
-        background-color: #ddd;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Collection of MLOps and DL Assignments</title>
+    <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
-    <h1>Text Classification</h1>
-    <textarea id="textInput" placeholder="Enter text here"></textarea>
-    <button onclick="predictCategory()">Classify</button>
-    <p id="result"></p>
-    <div class="checklist">
-      <h2>Checklist</h2>
-      <ul id="checklist">
-        <li>
-          Model: <span id="modelStatus">Not Loaded</span>
-          <div id="modelError" class="error-box" style="display: none"></div>
-        </li>
-        <li>
-          Tokenizer: <span id="tokenizerStatus">Not Loaded</span>
-          <div
-            id="tokenizerError"
-            class="error-box"
-            style="display: none"
-          ></div>
-        </li>
-      </ul>
-    </div>
-    <div class="category-list">
-      <h2>Category Names</h2>
-      <ul id="categoryList"></ul>
-    </div>
-    <div class="model-summary" style="font-family: monospace">
-      <p><strong>Model: "sequential_3"</strong></p>
-      <table style="border-collapse: collapse; width: 100%">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #000; padding: 8px; text-align: left">
-              Layer (type)
-            </th>
-            <th style="border: 1px solid #000; padding: 8px; text-align: left">
-              Output Shape
-            </th>
-            <th style="border: 1px solid #000; padding: 8px; text-align: left">
-              Param #
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="border: 1px solid #000; padding: 8px">
-              embedding_3 (Embedding)
-            </td>
-            <td style="border: 1px solid #000; padding: 8px">
-              (None, 100, 128)
-            </td>
-            <td style="border: 1px solid #000; padding: 8px">640,000</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #000; padding: 8px">lstm_1 (LSTM)</td>
-            <td style="border: 1px solid #000; padding: 8px">(None, 128)</td>
-            <td style="border: 1px solid #000; padding: 8px">131,584</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #000; padding: 8px">
-              dense_6 (Dense)
-            </td>
-            <td style="border: 1px solid #000; padding: 8px">(None, 128)</td>
-            <td style="border: 1px solid #000; padding: 8px">16,512</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #000; padding: 8px">
-              dense_7 (Dense)
-            </td>
-            <td style="border: 1px solid #000; padding: 8px">(None, 20)</td>
-            <td style="border: 1px solid #000; padding: 8px">2,580</td>
-          </tr>
-        </tbody>
-      </table>
-      <p><strong>Total params:</strong> 2,372,030 (9.05 MB)</p>
-      <p><strong>Trainable params:</strong> 790,676 (3.02 MB)</p>
-      <p><strong>Non-trainable params:</strong> 0 (0.00 B)</p>
-      <p><strong>Optimizer params:</strong> 1,581,354 (6.03 MB)</p>
-    </div>
+    <h1>Collection of MLOps and DL Assignments</h1>
+    <ul class="list">
+      <li>
+        <a href="https://adimail.pythonanywhere.com/" target="_blank">
+          Handwritten Digit Recognition
+        </a>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/adimail/digit-recognizer"
+              target="_blank"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.kaggle.com/code/decentralized/mnist-exercise"
+              target="_blank"
+              >Kaggle</a
+            >
+          </li>
+          <li>
+            <a href="https://adimail.pythonanywhere.com/" target="_blank"
+              >Live Demo</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/mlops/document-classification" target="_blank">
+          document classification: TfidfVectorizer and keras
+        </a>
+        <ul>
+          <li>
+            <a href="https://github.com/adimail/mlops" target="_blank"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.kaggle.com/code/decentralized/document-classification-tfidfvectorizer-and-keras"
+              target="_blank"
+              >Kaggle</a
+            >
+          </li>
+          <li>
+            <a href="/mlops/document-classification" target="_blank"
+              >Live Demo</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
   </body>
 </html>
