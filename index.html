@@ -8,57 +8,106 @@
   </head>
   <body>
     <h1>Collection of MLOps and DL Assignments</h1>
-    <ul class="list">
-      <li>
-        <a href="https://adimail.pythonanywhere.com/" target="_blank">
-          Handwritten Digit Recognition
-        </a>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/adimail/digit-recognizer"
-              target="_blank"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.kaggle.com/code/decentralized/mnist-exercise"
-              target="_blank"
-              >Kaggle</a
-            >
-          </li>
-          <li>
-            <a href="https://adimail.pythonanywhere.com/" target="_blank"
-              >Live Demo</a
-            >
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/mlops/document-classification" target="_blank">
-          document classification: TfidfVectorizer and keras
-        </a>
-        <ul>
-          <li>
-            <a href="https://github.com/adimail/mlops" target="_blank"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.kaggle.com/code/decentralized/document-classification-tfidfvectorizer-and-keras"
-              target="_blank"
-              >Kaggle</a
-            >
-          </li>
-          <li>
-            <a href="/mlops/document-classification" target="_blank"
-              >Live Demo</a
-            >
-          </li>
-        </ul>
-      </li>
+    <hr />
+    <div class="project-entry">
+      <a target="_blank" href="https://github.com/adimail/digit-recognizer"
+        >Handwritten Digit Recognition</a
+      >
+      <p class="intro">MNIST, Keras</p>
+      <div class="desc">
+        This Flask-based web application recognizes handwritten digits. Users
+        can draw digits on an HTML canvas, and the app predicts the digit using
+        a model trained on the MNIST dataset. The result is shown in real-time
+        on the screen.
+      </div>
+      <ul>
+        <li>
+          <a href="https://github.com/adimail/digit-recognizer" target="_blank"
+            >GitHub</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.kaggle.com/code/decentralized/mnist-exercise"
+            target="_blank"
+            >Kaggle</a
+          >
+        </li>
+        <li>
+          <a href="https://adimail.pythonanywhere.com/">Live Demo</a>
+        </li>
+      </ul>
+    </div>
+    <div class="project-entry">
+      <a target="_blank" href="https://github.com/adimail/digit-recognizer">
+        document classification: TfidfVectorizer and keras
+      </a>
+      <p class="intro">
+        fetch_20newsgroups, Keras, Tensorflow, naive_bayes MultinomialNB
+      </p>
+      <div class="desc">
+        a text classification model that can effectively identify, extract
+        features, and classify documents from the 20 Newsgroups dataset into one
+        of the 20 predefined categories using pattern recognition techniques.
+      </div>
+      <ul>
+        <li>
+          <a href="https://github.com/adimail/mlops" target="_blank">GitHub</a>
+        </li>
+        <li>
+          <a
+            href="https://www.kaggle.com/code/decentralized/document-classification-tfidfvectorizer-and-keras"
+            target="_blank"
+            >Kaggle</a
+          >
+        </li>
+        <li>
+          <a href="/mlops/document-classification">Live Demo</a>
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <h2>
+      Commit history for
+      <a href="https://github.com/adimail/mlops">adimail/mlops</a>
+    </h2>
+
+    <ul id="commits-list">
+      <li id="loading-message">Getting previous commits...</li>
     </ul>
   </body>
+
+  <script>
+    async function fetchCommits() {
+      const url = "https://api.github.com/repos/adimail/mlops/commits";
+      const commitsList = document.getElementById("commits-list");
+      const loadingMessage = document.getElementById("loading-message");
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.statusText}`);
+        }
+
+        const commits = await response.json();
+        commitsList.innerHTML = "";
+        commits.slice(0, 10).forEach((commit) => {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `
+              <strong>${commit.commit.message}</strong><br>
+              <em>Author:</em> ${commit.commit.author.name}<br>
+              <em>Date:</em> ${new Date(commit.commit.author.date).toLocaleString()}
+            `;
+          commitsList.appendChild(listItem);
+        });
+      } catch (error) {
+        console.error("Error fetching commits:", error);
+        commitsList.innerHTML = "<li>Failed to load commits.</li>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchCommits);
+  </script>
 </html>
